@@ -39,7 +39,6 @@ folium==0.12.1.post1
 fonttools==4.38.0
 fqdn==1.5.1
 gast==0.4.0
-GDAL==3.6.1
 geopandas==0.12.2
 gitdb==4.0.10
 GitPython==3.1.31
