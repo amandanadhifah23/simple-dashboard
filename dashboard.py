@@ -13,9 +13,20 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 
 # Load data
-day_df = pd.read_csv("day.csv")
-hour_df = pd.read_csv("hour.csv")
+# day_df = pd.read_csv("day.csv")
+# hour_df = pd.read_csv("hour.csv")
+@st.cache_data
+def load_data():
+    if not os.path.exists("day.csv") or not os.path.exists("hour.csv"):
+        st.error("Files not found. Please make sure 'day.csv' and 'hour.csv' are in the current directory.")
+        return None, None
+    day_df = pd.read_csv("day.csv")
+    hour_df = pd.read_csv("hour.csv")
+    return day_df, hour_df
 
+day_df, hour_df = load_data()
+if day_df is None or hour_df is None:
+    st.stop()
 
 # Set the style for the plots
 sns.set(style="whitegrid")
